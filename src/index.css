@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-100 transition-colors duration-500;
+  }
+
+  .page-gradient {
+    @apply bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 dark:from-slate-950 dark:via-slate-950 dark:to-black transition-colors duration-500;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply rounded-3xl backdrop-blur-xl bg-white/10 dark:bg-black/10 border border-white/20 shadow-soft hover:shadow-glow transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply relative overflow-hidden rounded-3xl bg-gradient-to-r from-neonCyan to-neonPurple text-slate-950 font-medium px-5 py-2 flex items-center justify-center gap-2 shadow-soft hover:shadow-glow transition-all duration-300;
+  }
+
+  .btn-primary::after {
+    content: '';
+    @apply absolute inset-0 bg-white/20 opacity-0 transition-opacity duration-300;
+  }
+
+  .btn-primary:hover::after {
+    @apply opacity-40;
+  }
+
+  .btn-primary:active {
+    transform: scale(0.97);
+  }
+
+  .ripple-container {
+    @apply relative overflow-hidden;
+  }
+
+  .ripple {
+    @apply absolute rounded-full bg-white/40 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none;
+    animation: ripple 600ms ease-out;
+  }
+
+  @keyframes ripple {
+    from {
+      width: 0;
+      height: 0;
+      opacity: 0.6;
+    }
+    to {
+      width: 400px;
+      height: 400px;
+      opacity: 0;
+    }
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+}
+
